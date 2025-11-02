@@ -69,28 +69,19 @@ function AdminLogin() {
       setLoading(true)
       setErrorMessage('') // 이전 에러 메시지 초기화
 
-      console.log('Admin login attempt:', formData.username)
-
       // 로그인 요청 (세션 생성)
-      const loginResponse = await adminApi.login(formData.username, formData.password)
-      console.log('Login response:', loginResponse)
+      await adminApi.login(formData.username, formData.password)
 
       // 로그인 성공 후 프로필 정보 조회
-      console.log('Fetching profile...')
       const profileResponse = await adminApi.getProfile()
-      console.log('Profile response:', profileResponse)
-
       const userData = profileResponse.data
-      console.log('User data:', userData)
 
       // 관리자 정보 저장 (토큰은 세션 쿠키로 관리)
       adminLogin(userData, null)
-      console.log('Admin login successful, navigating to dashboard...')
 
       // 대시보드로 이동
       navigate('/admin/dashboard')
     } catch (error) {
-      console.error('Admin login error:', error)
       // 구체적인 에러 메시지 추출 및 표시
       const message = handleApiError('Admin Login', error, t('Login_Failed'))
       setErrorMessage(message)

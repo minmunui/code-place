@@ -18,9 +18,6 @@ function Navbar() {
   const [showProfileDropdown, setShowProfileDropdown] = useState(false)
   const dropdownRef = useRef(null)
 
-  // 디버깅용
-  console.log('Navbar - user:', user, 'isAuthenticated:', isAuthenticated, 'profile:', profile)
-
   // 드롭다운 외부 클릭 시 닫기
   useEffect(() => {
     const handleClickOutside = (event) => {
@@ -34,7 +31,6 @@ function Navbar() {
   }, [])
 
   const handleLogout = async () => {
-    console.log('Logout clicked')
     try {
       await logout()
       setShowProfileDropdown(false)
@@ -50,18 +46,13 @@ function Navbar() {
   }
 
   const goToMyPage = () => {
-    console.log('Go to my page clicked, user:', user)
     if (user?.username) {
-      console.log('Navigating to:', `/user-home/dashboard/${user.username}`)
       navigate(`/user-home/dashboard/${user.username}`)
       setShowProfileDropdown(false)
-    } else {
-      console.log('No username found')
     }
   }
 
   const goToSettings = () => {
-    console.log('Go to settings clicked')
     navigate('/user-setting')
     setShowProfileDropdown(false)
   }
