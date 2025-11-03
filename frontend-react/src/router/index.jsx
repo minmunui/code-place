@@ -65,6 +65,8 @@ const AdminProblemList = lazy(() => import('../pages/admin/ProblemList'))
 const CreateProblem = lazy(() => import('../pages/admin/CreateProblem'))
 const EditProblem = lazy(() => import('../pages/admin/EditProblem'))
 const AdminContestList = lazy(() => import('../pages/admin/ContestList'))
+const CreateContest = lazy(() => import('../pages/admin/CreateContest'))
+const EditContest = lazy(() => import('../pages/admin/EditContest'))
 const AnnouncementManagement = lazy(() => import('../pages/admin/AnnouncementManagement'))
 
 /**
@@ -187,6 +189,8 @@ const router = createBrowserRouter([
       { path: 'problem/create', element: <CreateProblem /> },
       { path: 'problem/edit/:problemId', element: <EditProblem /> },
       { path: 'contests', element: <AdminContestList /> },
+      { path: 'contest/create', element: <CreateContest /> },
+      { path: 'contest/edit/:contestId', element: <EditContest /> },
     ],
   },
 ])
